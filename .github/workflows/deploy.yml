@@ -19,7 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unpack site
-        run: mkdir _site && unzip -q site.zip -d _site && ls -la _site
+        run: |
+          mkdir _site
+          unzip -q site.zip -d _site
+          cp assets/track.js _site/assets/track.js
+          ls -la _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
